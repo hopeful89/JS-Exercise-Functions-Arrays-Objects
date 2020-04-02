@@ -286,8 +286,12 @@ function getModelYears(array) {
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoById(/* code here */) {
-  /* code here */
+function getCarInfoById(array, id) {
+  for(let i = 0; i < array.length; i++){
+    if(array[i].id === id){
+      return `This is a ${array[i].car_make} ${array[i].car_model}`
+    }
+  }
 }
 
 /**
@@ -304,8 +308,14 @@ function getCarInfoById(/* code here */) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(/* code here */) {
-  /* code here */
+function getOlderCars(array, maxYear) {
+  let oldCar = [];
+
+  for(let i = 0; i < array.length; i++) {
+    if(array[i].car_year <= maxYear){
+      oldCar.push(array[i])
+    }
+  }return oldCar
 }
 
 /**
@@ -321,9 +331,19 @@ function getOlderCars(/* code here */) {
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
 */
-function getGermanCars(/* code here */) {
-  /* code here */
+function getGermanCars(array) {
+  let germanCars = [];
+
+  for(let i = 0; i < array.length; i++) {
+    let car = array[i].car_make;
+    if(car === "Audi" || car ===  "Mercedes-Benz" || car ===  "Volkswagen" || car === "BMW" ){
+      germanCars.push(array[i])
+    }
+  }return germanCars
 }
+
+
+
 
 /**
  * ### Challenge `carMaker`
@@ -338,8 +358,15 @@ function getGermanCars(/* code here */) {
  *         (1) causes the odometer in the object to be increased by the distance,
  *         (2) returns the updated value of the `odometer`.
 */
-function carMaker(/* code here */) {
-  /* code here */
+function carMaker(number) {
+  let newCar =  {
+    odometer: number,
+    drive: function(distance){
+      newCar.odometer = this.odometer + distance;
+      return newCar.odometer
+    }
+  }
+  return newCar
 }
 
 /// ////// END OF CHALLENGE /////////
