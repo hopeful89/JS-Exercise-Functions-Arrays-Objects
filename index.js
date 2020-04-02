@@ -75,8 +75,15 @@ function temperatureCtoF(temp) {
  * 
  * Hint: You can call your `temperatureCtoF` function from inside `temperatureInF`.
 */
-function temperatureInF(/* code here */) {
-  /* code here */
+function temperatureInF(temp, fOrC) {
+  let newTemp;
+  if(fOrC === 'F') {
+    newTemp = temp;
+  } else if(fOrC === 'C') {
+    newTemp = temperatureCtoF(temp);
+  } else {
+    return 'Type not valid'
+  }return Math.round(newTemp) + `F`;
 }
 
 
@@ -96,8 +103,12 @@ function temperatureInF(/* code here */) {
  *   email: "leia@leia.com",
  * }
 */
-function makePersonObject(/* code here */) {
-  /* code here */
+function makePersonObject(id, name, email) {
+  let newObject = {
+    id: id,
+    name: name,
+    email: email
+  };return newObject
 }
 
 /**
@@ -113,7 +124,8 @@ function makePersonObject(/* code here */) {
  * passing { id: 1, name: 'Leia', email: 'leia@leia.com` } as the argument,
  * the returned value should look like `Hello, my name is Leia`.
 */
-function getName(/* code here */) {
+function getName(object) {
+  return `Hello, my name is ${object.name}`
   /* code here */
 }
 
@@ -133,8 +145,12 @@ function getName(/* code here */) {
  * passing in [ 'orange', 'grape', 'apple', 'banana', 'mango' ] as the argument,
  * the returned value should be: 2.
 */
-function appleIndex(/* code here */) {
-  /* code here */
+function appleIndex(array) {
+  for(let i = 0; i < array.length; i++){
+    if(array[i] === 'apple'){
+      return i
+    }
+  }
 }
 
 /**
@@ -152,8 +168,15 @@ function appleIndex(/* code here */) {
  * passing in [ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango' ] as the argument,
  * the returned value should be: [ false, true, false, false, true, false ].
 */
-function isItAnApple(/* code here */) {
-  /* code here */
+function isItAnApple(array) {
+  let newArray = [];
+  for(let i = 0; i < array.length; i++){
+    if(array[i] === 'apple'){
+      newArray.push(true)
+    }else {
+      newArray.push(false)
+    }
+  }return newArray
 }
 
 
@@ -211,7 +234,8 @@ function get3rdCar(inventory) {
  * it will return `This is a Lincoln Navigator`.
 */
 function getCarInfoByIndex(inventory, index) {
-  /* code here */
+  const newCar = inventory[index];
+  return `This is a ${newCar.car_make} ${newCar.car_model}`
 }
 
 /**
@@ -225,8 +249,8 @@ function getCarInfoByIndex(inventory, index) {
  * For example, if getLastCarInfo is invoked passing the inventory inside /data/inventory.js,
  * it will return `This is a Lincoln Town Car`.
 */
-function getLastCarInfo(/* code here */) {
-  /* code here */
+function getLastCarInfo(array) {
+  return `This is a ${array[array.length - 1].car_make} ${array[array.length - 1].car_model}`
 }
 
 /**
@@ -238,7 +262,13 @@ function getLastCarInfo(/* code here */) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getModelYears returns an array containing all the 'car_year's in the inventory.
 */
-function getModelYears(/* code here */) {
+function getModelYears(array) {
+  let modelYears = [];
+
+  for(let i = 0; i < array.length; i++){
+    modelYears.push(array[i].car_year)
+  }return modelYears
+
   /* code here */
 }
 
