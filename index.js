@@ -76,14 +76,8 @@ function temperatureCtoF(temp) {
  * Hint: You can call your `temperatureCtoF` function from inside `temperatureInF`.
 */
 function temperatureInF(temp, fOrC) {
-  let newTemp;
-  if(fOrC === 'F') {
-    newTemp = temp;
-  } else if(fOrC === 'C') {
-    newTemp = temperatureCtoF(temp);
-  } else {
-    return 'Type not valid'
-  }return Math.round(newTemp) + `F`;
+  let newTemp =  (fOrC === 'F') ? `${temp}F`: `${temperatureCtoF(temp)}F`
+  return newTemp;
 }
 
 
@@ -146,11 +140,10 @@ function getName(object) {
  * the returned value should be: 2.
 */
 function appleIndex(array) {
+  let index;
   for(let i = 0; i < array.length; i++){
-    if(array[i] === 'apple'){
-      return i
-    }
-  }
+    (array[i] === 'apple') ? index = i: index;
+  }return index;
 }
 
 /**
@@ -171,13 +164,10 @@ function appleIndex(array) {
 function isItAnApple(array) {
   let newArray = [];
   for(let i = 0; i < array.length; i++){
-    if(array[i] === 'apple'){
-      newArray.push(true)
-    }else {
-      newArray.push(false)
-    }
-  }return newArray
-}
+      (array[i] === 'apple') ? newArray.push(true) : newArray.push(false);
+    }return newArray
+  }
+
 
 
 
@@ -287,12 +277,12 @@ function getModelYears(array) {
  * it will return `This is a Lincoln Navigator`.
 */
 function getCarInfoById(array, id) {
-  for(let i = 0; i < array.length; i++){
-    if(array[i].id === id){
-      return `This is a ${array[i].car_make} ${array[i].car_model}`
-    }
+    let carInfo = '';
+    for(let i = 0; i < array.length; i++){  
+      (array[i].id === id) ? carInfo = `This is a ${array[i].car_make} ${array[i].car_model}`: false;
+    }return carInfo
   }
-}
+// }
 
 /**
  * ### Challenge `getOlderCars`
