@@ -302,9 +302,7 @@ function getOlderCars(array, maxYear) {
   let oldCar = [];
 
   for(let i = 0; i < array.length; i++) {
-    if(array[i].car_year <= maxYear){
-      oldCar.push(array[i])
-    }
+    (array[i].car_year <= maxYear) ? oldCar.push(array[i]) : false;
   }return oldCar
 }
 
@@ -326,9 +324,7 @@ function getGermanCars(array) {
 
   for(let i = 0; i < array.length; i++) {
     let car = array[i].car_make;
-    if(car === "Audi" || car ===  "Mercedes-Benz" || car ===  "Volkswagen" || car === "BMW" ){
-      germanCars.push(array[i])
-    }
+    (car === "Audi" || car ===  "Mercedes-Benz" || car ===  "Volkswagen" || car === "BMW" ) ? germanCars.push(array[i]) : false;
   }return germanCars
 }
 
